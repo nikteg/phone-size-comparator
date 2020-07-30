@@ -99,7 +99,7 @@ export const Phone: React.FC<PhoneProps> = ({ phone, onRemove, color }) => {
 
 const visaCard = {
   device_name: "Credit card",
-  image_url: "/visa-card.png",
+  image_url: `${process.env.PUBLIC_URL}/visa-card.png`,
   detail: {
     body: {
       dimensions: "85.60 x 53.98",
