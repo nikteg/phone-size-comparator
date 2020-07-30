@@ -63,7 +63,7 @@ export interface PhoneProps {
 
 export const Phone: React.FC<PhoneProps> = ({ phone, onRemove, color }) => {
   const { width, height } = getSize(phone.detail.body.dimensions);
-  const newHeight = String((width / height) * 200);
+  const newHeight = (width / height) * 200;
 
   return (
     <Box
@@ -85,7 +85,7 @@ export const Phone: React.FC<PhoneProps> = ({ phone, onRemove, color }) => {
       <img
         alt={phone.device_name}
         src={phone.image_url}
-        style={{ maxWidth: "100%" }}
+        style={{ maxHeight: newHeight * 0.5, maxWidth: "100%" }}
       />
       <Text margin={"small"} size={"small"}>
         {phone.device_name}
