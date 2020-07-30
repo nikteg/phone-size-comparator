@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.da37b12e.chunk.js",
-    "main.js.map": "/static/js/main.da37b12e.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2e9dcb0c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2e9dcb0c.js.map",
-    "static/js/2.ad7d5bf9.chunk.js": "/static/js/2.ad7d5bf9.chunk.js",
-    "static/js/2.ad7d5bf9.chunk.js.map": "/static/js/2.ad7d5bf9.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.7887b36f56dfed0e54d711965ccf266b.js": "/precache-manifest.7887b36f56dfed0e54d711965ccf266b.js",
-    "service-worker.js": "/service-worker.js",
-    "static/js/2.ad7d5bf9.chunk.js.LICENSE.txt": "/static/js/2.ad7d5bf9.chunk.js.LICENSE.txt"
+    "main.js": "/phone-size-comparator/static/js/main.a65c3852.chunk.js",
+    "main.js.map": "/phone-size-comparator/static/js/main.a65c3852.chunk.js.map",
+    "runtime-main.js": "/phone-size-comparator/static/js/runtime-main.411f232f.js",
+    "runtime-main.js.map": "/phone-size-comparator/static/js/runtime-main.411f232f.js.map",
+    "static/js/2.95b1ea3f.chunk.js": "/phone-size-comparator/static/js/2.95b1ea3f.chunk.js",
+    "static/js/2.95b1ea3f.chunk.js.map": "/phone-size-comparator/static/js/2.95b1ea3f.chunk.js.map",
+    "index.html": "/phone-size-comparator/index.html",
+    "precache-manifest.a8e060aee0087834b6e4b5379f8919bf.js": "/phone-size-comparator/precache-manifest.a8e060aee0087834b6e4b5379f8919bf.js",
+    "service-worker.js": "/phone-size-comparator/service-worker.js",
+    "static/js/2.95b1ea3f.chunk.js.LICENSE.txt": "/phone-size-comparator/static/js/2.95b1ea3f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2e9dcb0c.js",
-    "static/js/2.ad7d5bf9.chunk.js",
-    "static/js/main.da37b12e.chunk.js"
+    "static/js/runtime-main.411f232f.js",
+    "static/js/2.95b1ea3f.chunk.js",
+    "static/js/main.a65c3852.chunk.js"
   ]
 }
