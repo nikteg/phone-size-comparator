@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/phone-size-comparator/precache-manifest.a8e060aee0087834b6e4b5379f8919bf.js"
+  "/phone-size-comparator/precache-manifest.2a0e642b6f6b32277045175e9820924c.js"
 );
 
 self.addEventListener('message', (event) => {
