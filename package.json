@@ -1,5 +1,6 @@
 {
   "name": "phone-size-comparator",
+  "homepage": "https://nikteg.github.io/phone-size-comparator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
