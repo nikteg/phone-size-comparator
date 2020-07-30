@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Grommet, Header, Main, Text, TextInput } from "grommet";
+import {
+  Box,
+  Button,
+  Grommet,
+  Header,
+  Main,
+  RangeInput,
+  Text,
+  TextInput,
+} from "grommet";
 import { Close, CreditCard, Search as SearchIcon } from "grommet-icons";
 import { dark } from "grommet/themes";
 import Fuse from "fuse.js";
@@ -59,18 +68,25 @@ export interface PhoneProps {
   phone: any;
   color: string;
   onRemove: () => void;
+  scale: number;
 }
 
-export const Phone: React.FC<PhoneProps> = ({ phone, onRemove, color }) => {
+export const Phone: React.FC<PhoneProps> = ({
+  phone,
+  onRemove,
+  scale,
+  color,
+}) => {
   const { width, height } = getSize(phone.detail.body.dimensions);
-  const newHeight = (width / height) * 200;
+  const newWidth = 200 * scale;
+  const newHeight = (width / height) * newWidth;
 
   return (
     <Box
       align={"center"}
       margin={"small"}
       border
-      width={"200px"}
+      width={`${newWidth}px`}
       height={`${newHeight}px`}
       round={"small"}
       background={color}
@@ -97,6 +113,26 @@ export const Phone: React.FC<PhoneProps> = ({ phone, onRemove, color }) => {
   );
 };
 
+export interface ZoomProps {
+  scale: number;
+  onChange: (zoom: number) => void;
+}
+
+export const ScaleSlider: React.FC<ZoomProps> = ({ scale, onChange }) => {
+  return (
+    <Box direction={"row"} align={"center"}>
+      <RangeInput
+        min={0.5}
+        max={2}
+        step={0.05}
+        value={scale}
+        onChange={(event: any) => onChange(event.target.value)}
+      />
+      <Text margin={{ left: "small" }}>{scale}</Text>
+    </Box>
+  );
+};
+
 const visaCard = {
   device_name: "Credit card",
   image_url: `${process.env.PUBLIC_URL}/visa-card.png`,
@@ -111,6 +147,7 @@ const initialData = [visaCard, ...DATA.data];
 
 export const App: React.FC = () => {
   const [items, setItems] = useState<any[]>(initialData);
+  const [scale, setScale] = useState(1);
 
   const addItem = (item: any) => {
     setItems([...items, item]);
@@ -136,13 +173,16 @@ export const App: React.FC = () => {
             title={"Add credit card"}
           />
         </Box>
-        <Box flex />
+        <Box flex>
+          <ScaleSlider onChange={setScale} scale={scale} />
+        </Box>
       </Header>
       <Main pad={"medium"} fill align={"center"}>
         <Text margin={"large"}>Add phones by searching above...</Text>
         <Box direction={"row"} flex>
           {items.map((item, index) => (
             <Phone
+              scale={scale}
               key={index}
               phone={item}
               onRemove={removeItem(index)}
