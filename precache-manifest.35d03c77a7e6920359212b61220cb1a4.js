@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "999bc40d2d82083624ed69761923a012",
+    "revision": "6df29303f17285fbd74de17d1b1e0d5a",
     "url": "/phone-size-comparator/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/phone-size-comparator/static/js/3.30dc0854.chunk.js"
   },
   {
-    "revision": "1a50b07ee44c49592de1",
-    "url": "/phone-size-comparator/static/js/main.b9199d16.chunk.js"
+    "revision": "b943b51deb16b2c18d71",
+    "url": "/phone-size-comparator/static/js/main.f513fe5c.chunk.js"
   },
   {
     "revision": "1790cd6f2e6550b0d7ea",

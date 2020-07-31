@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/phone-size-comparator/static/js/main.b9199d16.chunk.js",
-    "main.js.map": "/phone-size-comparator/static/js/main.b9199d16.chunk.js.map",
+    "main.js": "/phone-size-comparator/static/js/main.f513fe5c.chunk.js",
+    "main.js.map": "/phone-size-comparator/static/js/main.f513fe5c.chunk.js.map",
     "runtime-main.js": "/phone-size-comparator/static/js/runtime-main.e6241547.js",
     "runtime-main.js.map": "/phone-size-comparator/static/js/runtime-main.e6241547.js.map",
     "static/js/2.05b0a650.chunk.js": "/phone-size-comparator/static/js/2.05b0a650.chunk.js",
@@ -9,13 +9,13 @@
     "static/js/3.30dc0854.chunk.js": "/phone-size-comparator/static/js/3.30dc0854.chunk.js",
     "static/js/3.30dc0854.chunk.js.map": "/phone-size-comparator/static/js/3.30dc0854.chunk.js.map",
     "index.html": "/phone-size-comparator/index.html",
-    "precache-manifest.85c7761b6324b4ae4ee2e56502831c78.js": "/phone-size-comparator/precache-manifest.85c7761b6324b4ae4ee2e56502831c78.js",
+    "precache-manifest.35d03c77a7e6920359212b61220cb1a4.js": "/phone-size-comparator/precache-manifest.35d03c77a7e6920359212b61220cb1a4.js",
     "service-worker.js": "/phone-size-comparator/service-worker.js",
     "static/js/2.05b0a650.chunk.js.LICENSE.txt": "/phone-size-comparator/static/js/2.05b0a650.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e6241547.js",
     "static/js/2.05b0a650.chunk.js",
-    "static/js/main.b9199d16.chunk.js"
+    "static/js/main.f513fe5c.chunk.js"
   ]
 }
