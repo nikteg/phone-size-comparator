@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.js": "/phone-size-comparator/static/js/main.1425e23a.chunk.js",
-    "main.js.map": "/phone-size-comparator/static/js/main.1425e23a.chunk.js.map",
-    "runtime-main.js": "/phone-size-comparator/static/js/runtime-main.411f232f.js",
-    "runtime-main.js.map": "/phone-size-comparator/static/js/runtime-main.411f232f.js.map",
-    "static/js/2.a539e793.chunk.js": "/phone-size-comparator/static/js/2.a539e793.chunk.js",
-    "static/js/2.a539e793.chunk.js.map": "/phone-size-comparator/static/js/2.a539e793.chunk.js.map",
+    "main.js": "/phone-size-comparator/static/js/main.b9199d16.chunk.js",
+    "main.js.map": "/phone-size-comparator/static/js/main.b9199d16.chunk.js.map",
+    "runtime-main.js": "/phone-size-comparator/static/js/runtime-main.e6241547.js",
+    "runtime-main.js.map": "/phone-size-comparator/static/js/runtime-main.e6241547.js.map",
+    "static/js/2.05b0a650.chunk.js": "/phone-size-comparator/static/js/2.05b0a650.chunk.js",
+    "static/js/2.05b0a650.chunk.js.map": "/phone-size-comparator/static/js/2.05b0a650.chunk.js.map",
+    "static/js/3.30dc0854.chunk.js": "/phone-size-comparator/static/js/3.30dc0854.chunk.js",
+    "static/js/3.30dc0854.chunk.js.map": "/phone-size-comparator/static/js/3.30dc0854.chunk.js.map",
     "index.html": "/phone-size-comparator/index.html",
-    "precache-manifest.e3a7fd22208b4f56026a6f229e540f20.js": "/phone-size-comparator/precache-manifest.e3a7fd22208b4f56026a6f229e540f20.js",
+    "precache-manifest.85c7761b6324b4ae4ee2e56502831c78.js": "/phone-size-comparator/precache-manifest.85c7761b6324b4ae4ee2e56502831c78.js",
     "service-worker.js": "/phone-size-comparator/service-worker.js",
-    "static/js/2.a539e793.chunk.js.LICENSE.txt": "/phone-size-comparator/static/js/2.a539e793.chunk.js.LICENSE.txt"
+    "static/js/2.05b0a650.chunk.js.LICENSE.txt": "/phone-size-comparator/static/js/2.05b0a650.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.411f232f.js",
-    "static/js/2.a539e793.chunk.js",
-    "static/js/main.1425e23a.chunk.js"
+    "static/js/runtime-main.e6241547.js",
+    "static/js/2.05b0a650.chunk.js",
+    "static/js/main.b9199d16.chunk.js"
   ]
 }
