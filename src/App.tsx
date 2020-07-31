@@ -4,22 +4,19 @@ import {
   Button,
   Grommet,
   Header,
-  Main,
   RangeInput,
   Text,
   TextInput,
 } from "grommet";
-import { Close, CreditCard, Search as SearchIcon } from "grommet-icons";
+import { CreditCard, Search as SearchIcon } from "grommet-icons";
 import { dark } from "grommet/themes";
 import Fuse from "fuse.js";
-
-import DATA from "./data.json";
 
 function getSize(dimensions: string): { width: number; height: number } {
   const matches = dimensions.match(/(\d+\.?\d*) x (\d+\.?\d*)/);
 
   if (matches) {
-    const [, widthString, heightString] = matches;
+    const [, heightString, widthString] = matches;
     const width = parseFloat(widthString);
     const height = parseFloat(heightString);
     return { width, height };
@@ -28,22 +25,19 @@ function getSize(dimensions: string): { width: number; height: number } {
   return { width: 0, height: 0 };
 }
 
-const fuse = new Fuse(DATA.data, {
-  keys: ["device_name"],
-});
-
 export interface SearchProps {
+  fuse: Fuse<any>;
   onSearch: (item: any) => void;
 }
 
-export const Search: React.FC<SearchProps> = ({ onSearch }) => {
+export const Search: React.FC<SearchProps> = ({ onSearch, fuse }) => {
   const [query, setQuery] = useState("");
   const [items, setItems] = useState<any[]>([]);
 
   useEffect(() => {
-    const result = fuse.search(query);
+    const result = fuse.search(query, { limit: 10 });
     setItems(result.map((r) => r.item));
-  }, [query]);
+  }, [fuse, query]);
 
   return (
     <TextInput
@@ -51,7 +45,7 @@ export const Search: React.FC<SearchProps> = ({ onSearch }) => {
       value={query}
       onChange={(event) => setQuery(event.target.value)}
       suggestions={items.map((item) => ({
-        label: item.device_name,
+        label: `${item.oem} ${item.model}`,
         value: item,
       }))}
       icon={<SearchIcon />}
@@ -64,51 +58,38 @@ export const Search: React.FC<SearchProps> = ({ onSearch }) => {
   );
 };
 
-export interface PhoneProps {
-  phone: any;
-  color: string;
+export interface ItemProps {
+  item: any;
   onRemove: () => void;
   scale: number;
 }
 
-export const Phone: React.FC<PhoneProps> = ({
-  phone,
-  onRemove,
-  scale,
-  color,
-}) => {
-  const { width, height } = getSize(phone.detail.body.dimensions);
-  const newWidth = 200 * scale;
-  const newHeight = (width / height) * newWidth;
+export const Item: React.FC<ItemProps> = ({ item, onRemove, scale }) => {
+  const { width, height } = getSize(item.body_dimensions);
+  const newWidth = width * 4 * scale;
+  const newHeight = (height / width) * newWidth;
 
   return (
     <Box
-      align={"center"}
-      margin={"small"}
       border
       width={`${newWidth}px`}
       height={`${newHeight}px`}
       round={"small"}
-      background={color}
-      pad={"small"}
+      margin={"small"}
+      background={"white"}
+      flex={false}
+      justify={"center"}
+      align={"center"}
     >
+      <Text margin={"small"} size={"small"}>
+        {item.oem ? `${item.oem} ${item.model}` : item.model}
+      </Text>
       <Button
         onClick={onRemove}
-        icon={<Close />}
-        alignSelf={"end"}
-        title={"Remove"}
+        label={"Remove"}
+        size={"small"}
+        margin={"xxsmall"}
       />
-      <img
-        alt={phone.device_name}
-        src={phone.image_url}
-        style={{ maxHeight: newHeight * 0.5, maxWidth: "100%" }}
-      />
-      <Text margin={"small"} size={"small"}>
-        {phone.device_name}
-      </Text>
-      <Text size={"xsmall"}>
-        {width} mm &times; {height} mm
-      </Text>
     </Box>
   );
 };
@@ -128,26 +109,26 @@ export const ScaleSlider: React.FC<ZoomProps> = ({ scale, onChange }) => {
         value={scale}
         onChange={(event: any) => onChange(event.target.value)}
       />
-      <Text margin={{ left: "small" }}>{scale}</Text>
+      <Text margin={{ left: "small" }}>{Math.trunc(scale * 100)}%</Text>
     </Box>
   );
 };
 
-const visaCard = {
-  device_name: "Credit card",
-  image_url: `${process.env.PUBLIC_URL}/visa-card.png`,
-  detail: {
-    body: {
-      dimensions: "85.60 x 53.98",
-    },
-  },
+const creditCard = {
+  model: "Credit card",
+  body_dimensions: "85.60 x 53.98",
 };
 
-const initialData = [visaCard, ...DATA.data];
-
 export const App: React.FC = () => {
-  const [items, setItems] = useState<any[]>(initialData);
+  const [fuse, setFuse] = useState<any>(null);
+  const [items, setItems] = useState<any[]>([creditCard]);
   const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    import("./phones.json").then((data: any) => {
+      setFuse(new Fuse(data.devices, { keys: ["oem", "model"] }));
+    });
+  }, []);
 
   const addItem = (item: any) => {
     setItems([...items, item]);
@@ -159,38 +140,48 @@ export const App: React.FC = () => {
 
   return (
     <Grommet full theme={dark}>
-      <Header pad={{ horizontal: "small", vertical: "xsmall" }}>
-        <Box flex>
-          <Text size={"large"} margin={"small"}>
-            Phone size comparator
-          </Text>
-        </Box>
-        <Box flex direction={"row"} align={"center"}>
-          <Search onSearch={addItem} />
-          <Button
-            icon={<CreditCard />}
-            onClick={() => addItem(visaCard)}
-            title={"Add credit card"}
-          />
-        </Box>
-        <Box flex>
-          <ScaleSlider onChange={setScale} scale={scale} />
-        </Box>
-      </Header>
-      <Main pad={"medium"} fill align={"center"}>
-        <Text margin={"large"}>Add phones by searching above...</Text>
-        <Box direction={"row"} flex>
-          {items.map((item, index) => (
-            <Phone
-              scale={scale}
-              key={index}
-              phone={item}
-              onRemove={removeItem(index)}
-              color={`hsla(${(index * 20) % 360}deg, 100%, 50%, 0.4)`}
-            />
-          ))}
-        </Box>
-      </Main>
+      {fuse ? (
+        <>
+          <Header pad={{ horizontal: "small", vertical: "xsmall" }}>
+            <Box flex>
+              <Text size={"large"} margin={"small"}>
+                Phone size comparator
+              </Text>
+            </Box>
+            <Box flex direction={"row"} align={"center"}>
+              <Search fuse={fuse} onSearch={addItem} />
+              <Button
+                icon={<CreditCard />}
+                onClick={() => addItem(creditCard)}
+                title={"Add credit card"}
+              />
+            </Box>
+            <Box flex>
+              <ScaleSlider onChange={setScale} scale={scale} />
+            </Box>
+          </Header>
+          <Box pad={"medium"} align={"center"}>
+            <Box direction={"row"} flex>
+              {items.map((item, index) => (
+                <Item
+                  scale={scale}
+                  key={index}
+                  item={item}
+                  onRemove={removeItem(index)}
+                />
+              ))}
+            </Box>
+            <Text margin={"large"} textAlign={"center"}>
+              Add phones by searching above...
+              <br />
+              Tip: Match the scale with a credit card to get a real world sense
+              of how big a phone is.
+            </Text>
+          </Box>
+        </>
+      ) : (
+        "Loading"
+      )}
     </Grommet>
   );
 };
