@@ -180,7 +180,9 @@ export const App: React.FC = () => {
           </Box>
         </>
       ) : (
-        "Loading"
+        <Box align={"center"} justify={"center"} fill>
+          Loading data...
+        </Box>
       )}
     </Grommet>
   );
