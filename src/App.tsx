@@ -128,7 +128,7 @@ export const App: React.FC = () => {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    import("./phones.json").then((data: any) => {
+    import("./phones.min.json").then((data: any) => {
       setFuse(new Fuse(data.devices, { keys: ["oem", "model"] }));
     });
   }, []);
