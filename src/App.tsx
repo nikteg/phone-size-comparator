@@ -81,8 +81,11 @@ export const Item: React.FC<ItemProps> = ({ item, onRemove, scale }) => {
       justify={"center"}
       align={"center"}
     >
-      <Text margin={"small"} size={"small"}>
+      <Text size={"small"}>
         {item.oem ? `${item.oem} ${item.model}` : item.model}
+      </Text>
+      <Text margin={"small"} size={"small"}>
+        {width} mm &times; {height} mm
       </Text>
       <Button
         onClick={onRemove}
